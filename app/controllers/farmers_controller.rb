@@ -1,18 +1,31 @@
 class FarmersController < ApplicationController
   def index
-    @farmers = Farmer.all
+    @farmers = Farmer.by_active
   end
 
   def new
     @farmer = Farmer.new
   end
 
+  def edit
+    @farmer = Farmer.find(params[:id])
+  end
+
   def create
     @farmer = Farmer.new(farmer_params)
     if @farmer.save
-      redirect_to action: index
+      redirect_to farmers_path
     else
-      render new
+      render 'new'
+    end
+  end
+
+  def update
+    @farmer = Farmer.find(params[:id])
+    if @farmer.update(farmer_params)
+      redirect_to farmers_path
+    else
+      render 'edit'
     end
   end
 

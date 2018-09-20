@@ -1,9 +1,9 @@
 <h2>Farmers</h2>
 
-<%= link_to 'Create New Farmer', new_farmer_path %>
+<%= link_to 'Create New Farmer', new_farmer_path %><br>
 
 <%= @farmers.each_with_index do |farmer, index| %>
-  <% if farmer.present? %>
-    <h3><%= index + 1 %> : <%= farmer.firstname + farmer.lastname %></h3>
-  <% end %>
+  <tr>
+    <td><%= index + 1 %> : <%= farmer.firstname + farmer.lastname %> <%= link_to 'Edit Farmer', edit_farmer_path(farmer) %></td><br>
+  </tr>
 <% end %>
