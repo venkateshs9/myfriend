@@ -14,7 +14,8 @@ class FarmersController < ApplicationController
   def create
     @farmer = Farmer.new(farmer_params)
     if @farmer.save
-      redirect_to farmers_path
+      WebMailer.with(farmer: @farmer).welcome_mail.deliver_now
+      redirect_to farmers_path, flash: {notice: "Successfully signed up"}
     else
       render 'new'
     end
