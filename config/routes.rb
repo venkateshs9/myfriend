@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'farmers#index'
+  root 'welcome#index'
 
   resources :farmers
+
 end
