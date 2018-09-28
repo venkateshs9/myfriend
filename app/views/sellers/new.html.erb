@@ -1,13 +1,13 @@
-<%= form_for @farmer, local: true do |form| %>
+<%= form_for @seller, url: sellers_path, local: true do |form| %>
 
-<% if @farmer.errors.any? %>
+<% if @seller.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@farmer.errors.count, "error") %> prohibited
-        this farmer from being saved:
+        <%= pluralize(@seller.errors.count, "error") %> prohibited
+        this seller from being saved:
       </h2>
       <ul>
-        <% @farmer.errors.full_messages.each do |msg| %>
+        <% @seller.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
@@ -40,6 +40,6 @@
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit 'Sign Up' %>
   </p>
 <% end %>

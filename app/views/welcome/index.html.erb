@@ -1,4 +1,28 @@
 
 <h2> Welcome to MyFriend </h2>
 
-<%= link_to 'Subscribe', new_farmer_path %>
+<%= link_to 'SignUp For Seller', new_seller_path %> <br><br><br>
+
+<%= link_to 'SignUp For Buyer', new_buyer_path %>
+<br><br>
+
+<%= flash[:notice] if flash[:notice] %>
+<br><br>
+
+<% if @seller.present? %>
+Seller's:
+<br>
+<% @seller.each do |s| %>
+<%= s.fullname %><br>
+<% end %>
+<% end %>
+
+<br><br>
+
+<% if @buyer.present? %>
+Buyer's:
+<br>
+<% @buyer.each do |b| %>
+<%= b.fullname %><br>
+<% end %>
+<% end %>

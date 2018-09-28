@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_171548) do
+ActiveRecord::Schema.define(version: 2018_09_28_162535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,29 +27,19 @@ ActiveRecord::Schema.define(version: 2018_09_24_171548) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "farmers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string "type", null: false
     t.string "firstname"
     t.string "lastname"
     t.string "email"
+    t.string "username"
+    t.string "password"
     t.string "mobile"
-    t.text "address"
-    t.string "status"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fullname"
-  end
-
-  create_table "millers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.string "firstname"
-    t.string "lastname"
-    t.string "email"
-    t.string "mobile"
-    t.text "address"
     t.string "status"
-    t.string "mill_name"
-    t.string "mill_location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

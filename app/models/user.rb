@@ -1,6 +1,7 @@
-class Farmer < ApplicationRecord
+class User < ApplicationRecord
+
   #callbacks
-  before_save :farmer_status, :farmer_fullname
+  before_save :user_status, :user_fullname, :user_username
 
   #Validations
   validates :firstname, :address, presence: true
@@ -13,12 +14,16 @@ class Farmer < ApplicationRecord
   #Scopes
   scope :by_active, -> { where(status: "active") }
 
-  def farmer_status
+  def user_status
     self.status = "active"
   end
 
-  def farmer_fullname
+  def user_fullname
     self.fullname = "#{self.firstname} #{self.lastname}"
+  end
+
+  def user_username
+  	self.username = self.email
   end
 
 end
